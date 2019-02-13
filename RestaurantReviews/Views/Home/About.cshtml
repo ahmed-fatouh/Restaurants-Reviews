@@ -1,0 +1,7 @@
+﻿@model RestaurantReviews.Models.AboutModel
+@{ 
+    ViewBag.Title = "About";
+}
+
+<h3>@(Model?.Name ?? "None")</h3>
+<h4>Location: @(Model?.Location)</h4>
