@@ -1,0 +1,15 @@
+﻿@model System.Collections.Specialized.NameValueCollection
+
+<h3>Query String Values</h3>
+<table>
+    <tr><th>Name</th><th>Value</th></tr>
+    
+    @foreach (string key in Model.AllKeys)
+    {
+        <tr>
+            <td>@key</td>
+            <td>@Model.Get(key)</td>
+        </tr>
+    }
+    
+</table>

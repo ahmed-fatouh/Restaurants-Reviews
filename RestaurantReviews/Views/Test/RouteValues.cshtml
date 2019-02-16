@@ -1,0 +1,15 @@
+﻿@model System.Web.Routing.RouteValueDictionary
+
+<h3>Route Values</h3>
+<table>
+    <tr><th>Name</th><th>Value</th></tr>
+    
+    @foreach (KeyValuePair<string, object> kvp in Model)
+    {
+        <tr>
+            <td>@kvp.Key</td>
+            <td>@kvp.Value</td>
+        </tr>
+    }
+    
+</table>
