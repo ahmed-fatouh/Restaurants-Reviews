@@ -1,4 +1,5 @@
-﻿using RestaurantReviews.Models.Repository;
+﻿using RestaurantReviews.Filters;
+using RestaurantReviews.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,13 +27,11 @@ namespace RestaurantReviews.Controllers
         }
 
         // GET: Reviews/Details/5
+        [CheckReviewId]
         public ActionResult Details(int id)
         {
             var review = _repo.GetReview(id);
-            if (review == null)
-                return HttpNotFound();
-            else
-                return View(review);
+            return View(review);
         }
 
         // GET: Reviews/Create
@@ -58,17 +57,16 @@ namespace RestaurantReviews.Controllers
         }
 
         // GET: Reviews/Edit/5
+        [CheckReviewId]
         public ActionResult Edit(int id)
         {
             var review = _repo.GetReview(id);
-            if (review == null)
-                return HttpNotFound();
-            else
-                return View(review);
+            return View(review);
         }
 
         // POST: Reviews/Edit/5
         [HttpPost]
+        [CheckReviewId]
         public ActionResult Edit(int id, FormCollection collection)
         {
             var review = _repo.GetReview(id);
@@ -79,6 +77,7 @@ namespace RestaurantReviews.Controllers
         }
 
         // GET: Reviews/Delete/5
+        [CheckReviewId]
         public ActionResult Delete(int id)
         {
             return View();
@@ -86,6 +85,7 @@ namespace RestaurantReviews.Controllers
 
         // POST: Reviews/Delete/5
         [HttpPost]
+        [CheckReviewId]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
