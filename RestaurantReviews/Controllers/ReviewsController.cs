@@ -53,23 +53,22 @@ namespace RestaurantReviews.Controllers
         // GET: Reviews/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var review = _repo.GetReview(id);
+            if (review == null)
+                return HttpNotFound();
+            else
+                return View(review);
         }
 
         // POST: Reviews/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add update logic here
-
+            var review = _repo.GetReview(id);
+            if (TryUpdateModel(review))
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            else
+                return View(review);
         }
 
         // GET: Reviews/Delete/5
