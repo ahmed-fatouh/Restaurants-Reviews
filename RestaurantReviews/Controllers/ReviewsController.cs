@@ -11,7 +11,14 @@ namespace RestaurantReviews.Controllers
     {
 
         private IRestaurantReviewRepo _repo = new RestaurantReviewRepo();
-        
+
+        [ChildActionOnly]
+        public ActionResult BestReview ()
+        {
+            var bestReview = _repo.Reviews.OrderByDescending(r => r.Rating).First();
+            return PartialView("_Review", bestReview);
+        }
+
         // GET: Reviews
         public ActionResult Index()
         {

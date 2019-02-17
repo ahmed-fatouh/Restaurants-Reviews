@@ -29,6 +29,12 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        <div style="margin-bottom: 10px;">
+            <h4>Best Review</h4>
+            <table>
+                <tr>@Html.Action("BestReview", "Reviews")</tr>
+            </table>
+        </div>
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
