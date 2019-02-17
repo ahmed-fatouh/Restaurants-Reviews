@@ -101,6 +101,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AboutModel.cs" />
+    <Compile Include="Models\Repository\IRestaurantReviewRepo.cs" />
+    <Compile Include="Models\Repository\RestaurantReviewRepo.cs" />
+    <Compile Include="Models\RestaurantReview.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
