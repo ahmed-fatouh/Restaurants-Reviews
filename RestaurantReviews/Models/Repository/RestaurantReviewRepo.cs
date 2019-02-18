@@ -12,25 +12,25 @@ namespace RestaurantReviews.Models.Repository
             new RestaurantReview
             {
                 Id = 1,
-                Name = "Cinnamon Club",
-                Country = "UK",
-                City = "London",
+                //Name = "Cinnamon Club",
+                //Country = "UK",
+                //City = "London",
                 Rating = 10
             },
             new RestaurantReview
             {
                 Id = 2,
-                Name = "Marrakesh",
-                Country = "D.C.",
-                City = "USA",
+                //Name = "Marrakesh",
+                //Country = "D.C.",
+                //City = "USA",
                 Rating = 10
             },
             new RestaurantReview
             {
                 Id = 3,
-                Name = "The House of Eliot",
-                Country = "Ghent",
-                City = "Belgium",
+                //Name = "The House of Eliot",
+                //Country = "Ghent",
+                //City = "Belgium",
                 Rating = 10
             }
         };
