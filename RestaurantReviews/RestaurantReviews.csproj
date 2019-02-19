@@ -129,6 +129,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902190945118_Initial.cs" />
+    <Compile Include="Migrations\201902190945118_Initial.Designer.cs">
+      <DependentUpon>201902190945118_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\Repository\IRestaurantReviewRepo.cs" />
     <Compile Include="Models\Repository\RestaurantReviewRepo.cs" />
@@ -153,6 +158,7 @@
     <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Shared\_Review.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -166,6 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902190945118_Initial.resx">
+      <DependentUpon>201902190945118_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

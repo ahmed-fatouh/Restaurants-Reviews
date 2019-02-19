@@ -8,6 +8,9 @@ namespace RestaurantReviews.Models
 {
     public class RestaurantReviewsDb : DbContext
     {
+        public RestaurantReviewsDb() : base("RestaurantReviewsContext")
+        { }
+
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<RestaurantReview> Reviews { get; set; }
     }
