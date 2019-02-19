@@ -4,7 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Restaurants</h2>
+
+<form method="get" class="form-inline" style="margin: 10px 0; ">
+    <input type="search" name="searchByName" placeholder="Restaurant Name" class="form-control" />
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
 
 <p>
     @Html.ActionLink("Create New", "Create")

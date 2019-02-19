@@ -12,9 +12,13 @@ namespace RestaurantReviews.Controllers
     {
         RestaurantReviewsDb _db = new RestaurantReviewsDb();
 
-        public ActionResult Index()
+        public ActionResult Index(string searchByName)
         {
+            if (searchByName != null)
+                searchByName = searchByName.Trim();
+            
             //var model = from r in _db.Restaurants
+            //            where (searchByName == null || r.Name.Contains(searchByName))
             //            orderby r.Reviews.Average(rev => rev.Rating) descending
             //            select new RestaurantListViewModel()
             //            {
@@ -27,6 +31,7 @@ namespace RestaurantReviews.Controllers
             //            };
 
             var model = _db.Restaurants
+                        .Where(r => searchByName == null || r.Name.Contains(searchByName))
                         .OrderByDescending(r => r.Reviews.Average(rev => rev.Rating))
                         .Select(r => new RestaurantListViewModel()
                         {
