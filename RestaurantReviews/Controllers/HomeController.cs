@@ -1,4 +1,5 @@
 ﻿using RestaurantReviews.Models;
+using RestaurantReviews.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,30 @@ namespace RestaurantReviews.Controllers
 
         public ActionResult Index()
         {
-            var model = _db.Restaurants.ToList();
+            //var model = from r in _db.Restaurants
+            //            orderby r.Reviews.Average(rev => rev.Rating) descending
+            //            select new RestaurantListViewModel()
+            //            {
+            //                Id = r.Id,
+            //                Name = r.Name,
+            //                City = r.City,
+            //                Country = r.Country,
+            //                ReviewsCount = r.Reviews.Count,
+            //                AverageRating = r.Reviews.Average(rev => rev.Rating)
+            //            };
+
+            var model = _db.Restaurants
+                        .OrderByDescending(r => r.Reviews.Average(rev => rev.Rating))
+                        .Select(r => new RestaurantListViewModel()
+                        {
+                            Id = r.Id,
+                            Name = r.Name,
+                            City = r.City,
+                            Country = r.Country,
+                            ReviewsCount = r.Reviews.Count,
+                            AverageRating = r.Reviews.Average(rev => rev.Rating)
+                        });
+
             return View(model);
         }
 

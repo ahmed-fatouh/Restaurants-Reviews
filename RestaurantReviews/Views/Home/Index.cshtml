@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RestaurantReviews.Models.Restaurant>
+﻿@model IEnumerable<RestaurantReviews.Models.ViewModels.RestaurantListViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -20,6 +20,12 @@
         <th>
             @Html.DisplayNameFor(model => model.City)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewsCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AverageRating)
+        </th>
         <th></th>
     </tr>
 
@@ -33,6 +39,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AverageRating)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

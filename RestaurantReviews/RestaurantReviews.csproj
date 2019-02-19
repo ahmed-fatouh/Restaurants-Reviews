@@ -140,6 +140,7 @@
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantReview.cs" />
     <Compile Include="Models\RestaurantReviewsDb.cs" />
+    <Compile Include="Models\ViewModels\RestaurantListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
