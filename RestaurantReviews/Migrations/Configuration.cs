@@ -21,7 +21,8 @@ namespace RestaurantReviews.Migrations
                 new Restaurant { Name = "Marrakesh", Country = "USA", City = "D.C."},
                 new Restaurant { Name = "The House of Eliot", Country = "Ghent", City = "Belgium",
                                  Reviews = new RestaurantReview[] {
-                                    new RestaurantReview { Body = "Wonderful Service",Rating = 10 } } }
+                                    new RestaurantReview { Body = "Wonderful Service",Rating = 10,
+                                                           Name = "Ted" } } }
             };
             context.Restaurants.AddOrUpdate( r => r.Name ,restaurants);
         }
