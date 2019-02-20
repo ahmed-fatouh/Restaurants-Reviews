@@ -29,15 +29,6 @@ namespace RestaurantReviews.Controllers
             else
                 return HttpNotFound();
         }
-            
-
-        // GET: Reviews/Details/5
-        [CheckReviewId]
-        public ActionResult Details(int id)
-        {
-            var review = _repo.GetReview(id);
-            return View(review);
-        }
 
         // GET: Reviews/Create
         public ActionResult Create(int restaurantId)
