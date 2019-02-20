@@ -11,7 +11,7 @@ namespace RestaurantReviews.Filters
     //This checks if the supplied review id is valid, and if it corresponds to an existing review
     public class CheckReviewIdAttribute : ActionFilterAttribute
     {
-        private IRestaurantReviewRepo _repo = new RestaurantReviewRepo();
+        private RestaurantReviewDbRepo _repo = new RestaurantReviewDbRepo();
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {

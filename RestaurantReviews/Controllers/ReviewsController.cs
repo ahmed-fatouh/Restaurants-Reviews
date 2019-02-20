@@ -57,15 +57,16 @@ namespace RestaurantReviews.Controllers
         }
 
         // POST: Reviews/Edit/5
-        [HttpPost]
         [CheckReviewId]
-        public ActionResult Edit(int id, FormCollection collection)
+        [HttpPost]
+        public ActionResult Edit(int id, RestaurantReview review)
         {
-            var review = _repo.GetReview(id);
-            if (TryUpdateModel(review))
-                return RedirectToAction("Index");
-            else
-                return View(review);
+            if (ModelState.IsValid)
+            {
+                _repo.UpdateReview(review);
+                return RedirectToAction("Index", new { id = review.RestaurantId });
+            }
+            return View(review);
         }
 
         // GET: Reviews/Delete/5
