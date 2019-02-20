@@ -11,7 +11,7 @@ namespace RestaurantReviews.Controllers
     public class ReviewsController : Controller
     {
 
-        private IRestaurantReviewRepo _repo = new RestaurantReviewRepo();
+        private RestaurantReviewDbRepo _repo = new RestaurantReviewDbRepo();
 
         [ChildActionOnly]
         public ActionResult BestReview ()
@@ -21,10 +21,14 @@ namespace RestaurantReviews.Controllers
         }
 
         // GET: Reviews
-        public ActionResult Index()
+        public ActionResult Index([Bind(Prefix = "id")]int? restaurantId)
         {
-            return View(_repo.Reviews);
+            if (restaurantId.HasValue)
+                return View(_repo.GetRestaurantReviews(restaurantId.Value));
+            else
+                return HttpNotFound();
         }
+            
 
         // GET: Reviews/Details/5
         [CheckReviewId]

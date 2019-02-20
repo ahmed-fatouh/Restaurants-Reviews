@@ -1,14 +1,21 @@
 ﻿@model RestaurantReviews.Models.RestaurantReview
 
-@*<td>
-    @Html.DisplayFor(modelItem => Model.Name)
-</td>
-<td>
-    @Html.DisplayFor(modelItem => Model.Country)
-</td>
-<td>
-    @Html.DisplayFor(modelItem => Model.City)
-</td>*@
-<td>
-    <b>@Html.DisplayFor(modelItem => Model.Rating)</b>
-</td>
+<table class="table">
+    <tr>
+        <td colspan="2">
+            @Html.DisplayFor(modelItem => Model.Body)
+        </td> 
+    </tr>
+    <tr>
+        <td>
+            <b>@Html.DisplayNameFor(modelItem => Model.Name)</b> :
+            @Html.DisplayFor(modelItem => Model.Name)
+        </td>
+        <td>
+            <b>
+                @Html.DisplayNameFor(modelItem => Model.Rating) :
+                @Html.DisplayFor(modelItem => Model.Rating)
+            </b>
+        </td>
+    </tr>
+</table>
