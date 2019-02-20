@@ -19,7 +19,7 @@ namespace RestaurantReviews.Migrations
             {
                 new Restaurant { Name = "Cinnamon Club", Country = "UK", City = "London"},
                 new Restaurant { Name = "Marrakesh", Country = "USA", City = "D.C."},
-                new Restaurant { Name = "The House of Eliot", Country = "Ghent", City = "Belgium",
+                new Restaurant { Name = "The House of Eliot", Country = "Belgium", City = "Ghent",
                                  Reviews = new RestaurantReview[] {
                                     new RestaurantReview { Body = "Wonderful Service",Rating = 10,
                                                            Name = "Ted" } } }
