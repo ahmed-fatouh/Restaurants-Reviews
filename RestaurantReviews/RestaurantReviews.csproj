@@ -137,6 +137,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\Repository\IRestaurantReviewRepo.cs" />
+    <Compile Include="Models\Repository\RestaurantReviewDbRepo.cs" />
     <Compile Include="Models\Repository\RestaurantReviewRepo.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantReview.cs" />
@@ -166,6 +167,7 @@
     <Content Include="Views\Restaurant\Details.cshtml" />
     <Content Include="Views\Restaurant\Edit.cshtml" />
     <Content Include="Views\Restaurant\Index.cshtml" />
+    <Content Include="Views\Reviews\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

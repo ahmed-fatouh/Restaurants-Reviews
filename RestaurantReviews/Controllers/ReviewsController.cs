@@ -1,4 +1,5 @@
 ﻿using RestaurantReviews.Filters;
+using RestaurantReviews.Models;
 using RestaurantReviews.Models.Repository;
 using System;
 using System.Collections.Generic;
@@ -39,25 +40,21 @@ namespace RestaurantReviews.Controllers
         }
 
         // GET: Reviews/Create
-        public ActionResult Create()
+        public ActionResult Create(int restaurantId)
         {
             return View();
         }
 
         // POST: Reviews/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RestaurantReview review)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                _repo.AddReview(review);
+                return RedirectToAction("Index", new { id = review.RestaurantId });
             }
-            catch
-            {
-                return View();
-            }
+            return View(review);
         }
 
         // GET: Reviews/Edit/5

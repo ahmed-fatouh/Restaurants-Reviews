@@ -7,7 +7,7 @@
 <h2>Reviews</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new {restaurantId = ViewContext.RouteData.Values["id"]})
 </p>
 
 @foreach (var item in Model) {
@@ -22,7 +22,7 @@
 
 <p>
     Go to 
-    @Html.ActionLink("Restaurant Details", "Details", "Restaurant", new { id=Model.FirstOrDefault()?.Id}, new { })
+    @Html.ActionLink("Restaurant Details", "Details", "Restaurant", new { id = Model.FirstOrDefault()?.RestaurantId}, new { })
     Or
     @Html.ActionLink("Restaurants List", "Index", "Restaurant")
 </p>
