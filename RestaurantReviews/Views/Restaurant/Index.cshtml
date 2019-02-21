@@ -6,58 +6,33 @@
 
 <h2>Restaurants</h2>
 
-<form method="get" class="form-inline" style="margin: 10px 0; ">
+@*<form method="get" class="form-inline" style="margin: 10px 0; ">
     <input type="search" name="searchByName" placeholder="Restaurant Name" class="form-control" />
     <button class="btn btn-primary" type="submit">Search</button>
-</form>
+</form>*@
+
+@using (Ajax.BeginForm("Index", new { } , new AjaxOptions()
+        {
+            HttpMethod = "Get",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "restaurants-list",
+            LoadingElementId = "loading",
+            LoadingElementDuration = 1000,
+            
+        }, new { @class = "form-inline" , style = "margin: 10px 0; " }))
+{
+    <input type="search" name="searchByName" placeholder="Restaurant Name" class="form-control" />
+    <button class="btn btn-primary" type="submit">Search</button>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReviewsCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AverageRating)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReviewsCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AverageRating)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }) |
-            @Html.ActionLink("Reviews", "Index", "Reviews", new { id = item.Id }, null)
-        </td>
-    </tr>
-}
+<p style="color: brown; display: none" id="loading">
+    Loading.......
+</p>
 
-</table>
+<div id="restaurants-list">
+    @Html.Partial("_Restaurants", Model)
+</div>

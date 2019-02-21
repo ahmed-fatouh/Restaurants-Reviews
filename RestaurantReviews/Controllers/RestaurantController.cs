@@ -16,7 +16,7 @@ namespace RestaurantReviews.Controllers
         private RestaurantReviewsDb db = new RestaurantReviewsDb();
 
         // GET: Restaurant
-        public ActionResult Index(string searchByName)
+        public ActionResult Index(string searchByName, int page = 1, int itemsPerPage = 10)
         {
             if (searchByName != null)
                 searchByName = searchByName.Trim();
@@ -24,6 +24,8 @@ namespace RestaurantReviews.Controllers
             var model = db.Restaurants
                         .Where(r => searchByName == null || r.Name.Contains(searchByName))
                         .OrderByDescending(r => r.Reviews.Average(rev => rev.Rating))
+                        .Skip(itemsPerPage * (page - 1))
+                        .Take(itemsPerPage)
                         .Select(r => new RestaurantListViewModel()
                         {
                             Id = r.Id,
@@ -34,7 +36,10 @@ namespace RestaurantReviews.Controllers
                             AverageRating = r.Reviews.Average(rev => rev.Rating)
                         });
 
-            return View(model);
+            if (Request.IsAjaxRequest())
+                return PartialView("_Restaurants", model);
+            else
+                return View(model);
         }
 
         // GET: Restaurant/Details/5
