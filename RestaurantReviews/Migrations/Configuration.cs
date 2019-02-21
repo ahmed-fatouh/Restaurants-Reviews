@@ -25,6 +25,15 @@ namespace RestaurantReviews.Migrations
                                                            Name = "Ted" } } }
             };
             context.Restaurants.AddOrUpdate( r => r.Name ,restaurants);
+            for (int i = 1; i <= 200; i++)
+            {
+                context.Restaurants.AddOrUpdate( r => r.Name, new Restaurant
+                {
+                    Name = i.ToString(),
+                    Country = "None",
+                    City = "None"
+                });
+            }
         }
     }
 }
