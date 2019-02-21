@@ -12,38 +12,9 @@ namespace RestaurantReviews.Controllers
     {
         RestaurantReviewsDb _db = new RestaurantReviewsDb();
 
-        public ActionResult Index(string searchByName)
+        public ActionResult Index()
         {
-            if (searchByName != null)
-                searchByName = searchByName.Trim();
-            
-            //var model = from r in _db.Restaurants
-            //            where (searchByName == null || r.Name.Contains(searchByName))
-            //            orderby r.Reviews.Average(rev => rev.Rating) descending
-            //            select new RestaurantListViewModel()
-            //            {
-            //                Id = r.Id,
-            //                Name = r.Name,
-            //                City = r.City,
-            //                Country = r.Country,
-            //                ReviewsCount = r.Reviews.Count,
-            //                AverageRating = r.Reviews.Average(rev => rev.Rating)
-            //            };
-
-            var model = _db.Restaurants
-                        .Where(r => searchByName == null || r.Name.Contains(searchByName))
-                        .OrderByDescending(r => r.Reviews.Average(rev => rev.Rating))
-                        .Select(r => new RestaurantListViewModel()
-                        {
-                            Id = r.Id,
-                            Name = r.Name,
-                            City = r.City,
-                            Country = r.Country,
-                            ReviewsCount = r.Reviews.Count,
-                            AverageRating = r.Reviews.Average(rev => rev.Rating)
-                        });
-
-            return View(model);
+            return RedirectToAction("Index", "Restaurant");
         }
 
         public ActionResult About()

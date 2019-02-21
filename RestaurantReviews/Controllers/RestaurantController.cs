@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RestaurantReviews.Models;
+using RestaurantReviews.Models.ViewModels;
 
 namespace RestaurantReviews.Controllers
 {
@@ -15,9 +16,25 @@ namespace RestaurantReviews.Controllers
         private RestaurantReviewsDb db = new RestaurantReviewsDb();
 
         // GET: Restaurant
-        public ActionResult Index()
+        public ActionResult Index(string searchByName)
         {
-            return View(db.Restaurants.ToList());
+            if (searchByName != null)
+                searchByName = searchByName.Trim();
+
+            var model = db.Restaurants
+                        .Where(r => searchByName == null || r.Name.Contains(searchByName))
+                        .OrderByDescending(r => r.Reviews.Average(rev => rev.Rating))
+                        .Select(r => new RestaurantListViewModel()
+                        {
+                            Id = r.Id,
+                            Name = r.Name,
+                            City = r.City,
+                            Country = r.Country,
+                            ReviewsCount = r.Reviews.Count,
+                            AverageRating = r.Reviews.Average(rev => rev.Rating)
+                        });
+
+            return View(model);
         }
 
         // GET: Restaurant/Details/5
