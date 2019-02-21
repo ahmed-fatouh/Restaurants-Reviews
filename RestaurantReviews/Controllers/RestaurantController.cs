@@ -16,6 +16,7 @@ namespace RestaurantReviews.Controllers
         private RestaurantReviewsDb db = new RestaurantReviewsDb();
 
         // GET: Restaurant
+        [OutputCache(Duration = 60)]
         public ActionResult Index(string searchByName, int page = 1, int itemsPerPage = 10)
         {
             if (searchByName != null)
@@ -35,6 +36,8 @@ namespace RestaurantReviews.Controllers
                             ReviewsCount = r.Reviews.Count,
                             AverageRating = r.Reviews.Average(rev => rev.Rating)
                         });
+
+            ViewBag.CurrentTime = DateTime.Now;
 
             if (Request.IsAjaxRequest())
                 return PartialView("_Restaurants", model);
